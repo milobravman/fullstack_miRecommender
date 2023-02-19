@@ -3,7 +3,11 @@
 one:
   id: 
   name: MyString
+  likes: one
+  dislikes: one
 
 two:
   id: 
   name: MyString
+  likes: two
+  dislikes: two
