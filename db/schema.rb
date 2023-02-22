@@ -10,6 +10,61 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2023_02_22_204035) do
 
+  create_table "articles", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "dislikes", force: :cascade do |t|
+    t.integer "post_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id"], name: "index_dislikes_on_post_id"
+    t.index ["user_id"], name: "index_dislikes_on_user_id"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.integer "post_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id"], name: "index_likes_on_post_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.string "img"
+    t.integer "like_id", null: false
+    t.integer "dislike_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["dislike_id"], name: "index_posts_on_dislike_id"
+    t.index ["like_id"], name: "index_posts_on_like_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.integer "like_id", null: false
+    t.integer "dislike_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["dislike_id"], name: "index_users_on_dislike_id"
+    t.index ["like_id"], name: "index_users_on_like_id"
+  end
+
+  add_foreign_key "dislikes", "posts"
+  add_foreign_key "dislikes", "users"
+  add_foreign_key "likes", "posts"
+  add_foreign_key "likes", "users"
+  add_foreign_key "posts", "dislikes"
+  add_foreign_key "posts", "likes"
+  add_foreign_key "users", "dislikes"
+  add_foreign_key "users", "likes"
 end

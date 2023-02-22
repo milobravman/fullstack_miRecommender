@@ -2,14 +2,8 @@
 
 one:
   title: MyString
-  description: MyText
-  img: MyString
-  like: one
-  dislike: one
+  body: MyText
 
 two:
   title: MyString
-  description: MyText
-  img: MyString
-  like: two
-  dislike: two
+  body: MyText
