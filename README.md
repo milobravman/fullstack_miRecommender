@@ -45,7 +45,7 @@ has a discrition
 has many users through likes
 has many users through dislikes
 
-bin/rails generate model Post title:string description:text img:string like:references dislike:references
+bin/rails generate model Post title:string description:text img:string
 
 
 ----Like----
@@ -55,11 +55,11 @@ bin/rails generate model Post title:string description:text img:string like:refe
 has one post
 has one user
 
-bin/rails generate model Like post:references user:references  
+bin/rails generate model Like post_id:integer user_id:integer
 
 ----Dislike----
 
 has one post
 has one user
 
-bin/rails generate model Dislike post:references user:references  
+bin/rails generate model Dislike post_id:integer user_id:integer
