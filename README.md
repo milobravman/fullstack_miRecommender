@@ -7,6 +7,8 @@ Things you may want to cover:
 
 * Ruby version 2.6.1p33 
 
+* I've installed a new version of ruby because of a google cloud project will that break this project
+
 * System dependencies
 
 * Configuration
